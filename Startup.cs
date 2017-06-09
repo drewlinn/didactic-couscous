@@ -4,6 +4,8 @@ using Microsoft.AspNet.Builder;
 using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
+using System;
+using System.Data.SqlClient;
 
 namespace HairSalon
 {
