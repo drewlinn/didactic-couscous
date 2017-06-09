@@ -42,6 +42,6 @@ namespace HairSalon
   }
   public static class DBConfiguration
   {
-      public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=HairSalon;Integrated Security=SSPI;";
+    public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=HairSalon;Integrated Security=SSPI;";
   }
 }

@@ -12,7 +12,7 @@ namespace HairSalon
   {
     public ClientTest()
     {
-      DBConfiguration.ConnectionString = "Data Source=(localdb)\\msssqllocaldb; Initial Catalog=HairSalon_test; Integrated Security=SSPI;";
+      DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb; Initial Catalog=HairSalon_test; Integrated Security=SSPI;";
     }
 
     [Fact]

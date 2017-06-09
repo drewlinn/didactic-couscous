@@ -11,7 +11,7 @@
 //   {
 //     public StylistTest()
 //     {
-//       DB Configuration.ConnectionString = "Data Source=(localdb)\\msssqllocaldb; Initial Catalog=HairSalon_test; Integrated Security=SSPI;";
+//       DB Configuration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb; Initial Catalog=HairSalon_test; Integrated Security=SSPI;";
 //     }
 //   }
 //
