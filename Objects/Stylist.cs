@@ -41,7 +41,6 @@ namespace HairSalon
       return this.GetName().GetHashCode();
     }
 
-
     public int GetId()
     {
       return _id;
@@ -74,7 +73,6 @@ namespace HairSalon
     // {
     //   _email = newEmail;
     // }
-
 
     public static List<Stylist> GetAll()
     {

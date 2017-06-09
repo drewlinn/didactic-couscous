@@ -16,7 +16,7 @@ namespace HairSalon
     }
 
     [Fact]
-    public void Test_StylistEmptyAtFirst()
+    public void Test_DatabaseInitiallyEmpty()
     {
       int result = Stylist.GetAll().Count;
       Assert.Equal(0, result);

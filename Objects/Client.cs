@@ -38,12 +38,11 @@ namespace HairSalon.Objects
         return (idEquality && nameEquality && phoneEquality && emailEquality && stylistIdEquality);
       }
     }
-    
+
     public override int GetHashCode()
     {
       return this.GetName().GetHashCode();
     }
-
 
     public int GetId()
     {
@@ -85,6 +84,7 @@ namespace HairSalon.Objects
     // {
     //   _stylist = newStylistId
     // }
+
     public static List<Client> GetAll()
     {
       List<Client> AllClients = new List<Client>{};
@@ -114,6 +114,42 @@ namespace HairSalon.Objects
         conn.Close();
       }
       return AllClients;
+    }
+
+    public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO Clients (name, phone#, email, stylistId) OUTPUT INSERTED.id VALUES (@name, @phone, @email, @stylistId);", conn);
+
+      SqlParameter nameParam = new SqlParameter("@name", this.GetName());
+
+      SqlParameter phoneParam = new SqlParameter("@phone", this.GetPhone());
+
+      SqlParameter emailParam = new SqlParameter("@email", this.GetEmail());
+
+      SqlParameter stylistIdParam = new SqlParameter("@stylistId", this.GetStylistId());
+
+      cmd.Parameters.Add(nameParam);
+      cmd.Parameters.Add(phoneParam);
+      cmd.Parameters.Add(emailParam);
+      cmd.Parameters.Add(stylistIdParam);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
     }
 
     public static void DeleteAll()
