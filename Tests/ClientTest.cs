@@ -53,18 +53,25 @@ namespace HairSalon
     [Fact]
     public void Test_Delete_ClientFromDatabase()
     {
-      //Arrange
       Client testClient1 = new Client("Jerry Smith", "789-101-1121", "HungryForApples@RickandMorty.com", 1);
       testClient1.Save();
       Client testClient2 = new Client("Rick Sanchez", "121-028-0641", "PortalGunFun@RickandMorty", 2);
       testClient2.Save();
-
-      //Act
       testClient1.Delete();
       List<Client> resultClients = Client.GetAll();
       List<Client> testClient = new List<Client> {testClient2};
-      //Assert
       Assert.Equal(resultClients, testClient);
+    }
+
+    [Fact]
+    public void Test_Find_ClientInDatabase()
+    {
+      Client testClient = new Client("Summer Smith", "785-267-7865", "NeverpastBedtimeLand@RickandMorty.com", 1);
+      testClient.Save();
+
+      Client foundClient = Client.Find(testClient.GetId());
+
+      Assert.Equal(testClient, foundClient);
 
     }
 
