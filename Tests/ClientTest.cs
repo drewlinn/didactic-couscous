@@ -47,10 +47,26 @@ namespace HairSalon
       string newEmail = "EvilMorty@RickandMorty.com";
       testClient.Update(newName, newPhone, newEmail);
       string result = testClient.GetPhone();
-      
       Assert.Equal(newPhone, result);
     }
 
+    [Fact]
+    public void Test_Delete_ClientFromDatabase()
+    {
+      //Arrange
+      Client testClient1 = new Client("Jerry Smith", "789-101-1121", "HungryForApples@RickandMorty.com", 1);
+      testClient1.Save();
+      Client testClient2 = new Client("Rick Sanchez", "121-028-0641", "PortalGunFun@RickandMorty", 2);
+      testClient2.Save();
+
+      //Act
+      testClient1.Delete();
+      List<Client> resultClients = Client.GetAll();
+      List<Client> testClient = new List<Client> {testClient2};
+      //Assert
+      Assert.Equal(resultClients, testClient);
+
+    }
 
     public void Dispose()
     {
