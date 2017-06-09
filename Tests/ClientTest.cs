@@ -34,6 +34,22 @@ namespace HairSalon
       Assert.Equal(testList, result);
     }
 
+    [Fact]
+    public void Test_Update_ClientInDatabase()
+    {
+      string name = "Morty Smith";
+      string phone = "555-555-5555";
+      string email = "SecretlyACar@RickandMorty.com";
+      Client testClient = new Client(name, phone, email, 1);
+      testClient.Save();
+      string newName = "EvilMorty";
+      string newPhone = "555-545-5555";
+      string newEmail = "EvilMorty@RickandMorty.com";
+      testClient.Update(newName, newPhone, newEmail);
+      string result = testClient.GetPhone();
+      Assert.Equal(newPhone, result);
+    }
+
 
     public void Dispose()
     {

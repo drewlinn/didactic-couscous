@@ -152,6 +152,43 @@ namespace HairSalon.Objects
       }
     }
 
+    public void Update(string newName, string newPhone, string newEmail)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("UPDATE Clients SET name = @newName OUTPUT INSERTED.name WHERE id = @id; UPDATE Clients SET phone# = @newPhone OUTPUT INSERTED.phone# WHERE id = @id; UPDATE Clients SET email = @newEmail OUTPUT INSERTED.email WHERE id = @id;", conn);
+
+      SqlParameter newNamePara = new SqlParameter("@newName", newName);
+      SqlParameter newPhonePara = new SqlParameter("@newPhone", newPhone);
+      SqlParameter newEmailPara = new SqlParameter("@newEmail", newEmail);
+      SqlParameter idPara = new SqlParameter("@id", this.GetId());
+
+
+      cmd.Parameters.Add(newNamePara);
+      cmd.Parameters.Add(newPhonePara);
+      cmd.Parameters.Add(newEmailPara);
+      cmd.Parameters.Add(idPara);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+      while(rdr.Read())
+      {
+        this._name = rdr.GetString(0);
+        this._phone = rdr.GetString(0);
+        this._email = rdr.GetString(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      Console.WriteLine(newName + newPhone + newEmail);
+    }
+
     public static void DeleteAll()
     {
       SqlConnection conn = DB.Connection();
