@@ -10,9 +10,19 @@ A website created with C# and HTML where a user can create a list of Hair Stylis
 
 
 ### Specifications
-| Behavior | Input | Output | Description |
-| :------- | :---- | :----- | :---------- |
-| **
+| Behavior | Input | Output |
+| :------- | :---- | :----- |
+| **Employees can create a Stylist | "Add Beth Smith" | "Beth Smith has been successfully added." |
+| **Employees can create a Client with a Stylist | "Add Rick Sanchez" | "Rick Sanchez has been successfully added. His stylist is Beth Smith." |
+| **A Client can only have one Stylist | "Rick Sanchez" | "Rick Sanchez's Stylist is Beth Smith" |
+| **A Stylist can have more than one Client | "Beth Smith" | "Beth Smith has the following clients: Rick Sanchez, Jerry Smith, Summer Smith, Morty Smith" |
+| **Clients can be viewed | "Bojack Horseman" | "Bojack Horseman's Stylist is Princess Carolyn." |
+| **Stylists can be viewed with all their Clients listed | "Mr. Meeseeks" | "Mr. Meeseeks has the following clients: Jerry Smith, Beth Smith, and Summer Smith" |
+| **Clients can be updated | "Richard Sanchez" | "Rick Sanchez is now Richard Sanchez" |
+| **Stylists can be updated | "Beth Smith, Beth.Smith@yahoo.com" | "Beth Smith's new email is Beth.Smith@yahoo.com" |
+| **Clients can be deleted | "Jerry Smith - Delete" | "Jerry Smith has been removed from clients." |
+| **Stylists can be deleted | "Beth Smith - Delete" | "Beth Smith has been removed from Stylists" |
+| **Clients of the same Stylist can be searched | "Princess Carolyn's Clients" | "Bojack Horseman, Mr. Peanutbutter, Todd Chavez", "Diane Nguyen" |
 
 
 ## Setup/Installation Requirements
