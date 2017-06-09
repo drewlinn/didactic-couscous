@@ -22,6 +22,21 @@ namespace HairSalon
       Assert.Equal(0, result);
     }
 
+    [Fact]
+    public void Test_Save_StylistToDatabase()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Princess Carolyn", "101-0478-4710", "AgentPrincess@BojackHorseman.com");
+      testStylist.Save();
+
+      //Act
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
     public void Dispose()
     {
       Client.DeleteAll();
