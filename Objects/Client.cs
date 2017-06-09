@@ -38,28 +38,53 @@ namespace HairSalon.Objects
         return (idEquality && nameEquality && phoneEquality && emailEquality && stylistIdEquality);
       }
     }
+    
+    public override int GetHashCode()
+    {
+      return this.GetName().GetHashCode();
+    }
+
 
     public int GetId()
     {
       return _id;
     }
+    // public void SetId(int newId)
+    // {
+    //   _id = newId;
+    // }
     public string GetName()
     {
       return _name;
     }
+    // public void SetName(string newName)
+    // {
+    //   _name = newName;
+    // }
     public string GetPhone()
     {
       return _phone;
     }
+    // public void SetPhone(string newPhone)
+    // {
+    //   _phone = newPhone;
+    // }
     public string GetEmail()
     {
       return _email;
     }
+    // public void SetEmail(string newEmail)
+    // {
+    //   _email = newEmail;
+    // }
     public int GetStylistId()
     {
       return _stylist_id;
     }
-
+    // public void SetStylistId(int stylistId)
+    // {
+    //   _stylist = newStylistId
+    // }
     public static List<Client> GetAll()
     {
       List<Client> AllClients = new List<Client>{};

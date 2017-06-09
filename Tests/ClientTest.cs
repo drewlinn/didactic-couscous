@@ -18,16 +18,14 @@ namespace HairSalon
     [Fact]
     public void Test_DatabaseInitiallyEmpty()
     {
-      //Arrange, Act
       int result = Client.GetAll().Count;
-      //Assert
       Assert.Equal(0, result);
     }
 
     public void Dispose()
     {
       Client.DeleteAll();
-      // Stylist.DeleteAll();
+      Stylist.DeleteAll();
     }
   }
 }
