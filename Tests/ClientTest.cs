@@ -47,6 +47,7 @@ namespace HairSalon
       string newEmail = "EvilMorty@RickandMorty.com";
       testClient.Update(newName, newPhone, newEmail);
       string result = testClient.GetPhone();
+      
       Assert.Equal(newPhone, result);
     }
 

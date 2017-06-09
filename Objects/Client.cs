@@ -157,7 +157,7 @@ namespace HairSalon.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("UPDATE Clients SET name = @newName OUTPUT INSERTED.name WHERE id = @id; UPDATE Clients SET phone# = @newPhone OUTPUT INSERTED.phone# WHERE id = @id; UPDATE Clients SET email = @newEmail OUTPUT INSERTED.email WHERE id = @id;", conn);
+      SqlCommand cmd = new SqlCommand("UPDATE Clients SET name = @newName, phone# = @newPhone, email = @newEmail OUTPUT INSERTED.name, INSERTED.phone#, INSERTED.email WHERE id = @id", conn);
 
       SqlParameter newNamePara = new SqlParameter("@newName", newName);
       SqlParameter newPhonePara = new SqlParameter("@newPhone", newPhone);
@@ -173,9 +173,9 @@ namespace HairSalon.Objects
       SqlDataReader rdr = cmd.ExecuteReader();
       while(rdr.Read())
       {
-        this._name = rdr.GetString(0);
-        this._phone = rdr.GetString(0);
-        this._email = rdr.GetString(0);
+          this._name = rdr.GetString(0);
+          this._phone = rdr.GetString(1);
+          this._email = rdr.GetString(2);
       }
       if (rdr != null)
       {
@@ -186,7 +186,6 @@ namespace HairSalon.Objects
       {
         conn.Close();
       }
-      Console.WriteLine(newName + newPhone + newEmail);
     }
 
     public static void DeleteAll()
