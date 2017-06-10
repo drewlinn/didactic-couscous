@@ -25,16 +25,28 @@ namespace HairSalon
     [Fact]
     public void Test_Save_StylistToDatabase()
     {
-      //Arrange
       Stylist testStylist = new Stylist("Princess Carolyn", "101-0478-4710", "AgentPrincess@BojackHorseman.com");
       testStylist.Save();
-
-      //Act
       List<Stylist> result = Stylist.GetAll();
       List<Stylist> testList = new List<Stylist>{testStylist};
+      Assert.Equal(testList, result);
+    }
+
+    [Fact]
+    public void Test_Update_StylistInDatabase()
+    {
+      //Arrange
+      string phone = "456-789-1211";
+      Stylist testStylist = new Stylist("Diane Nguyen", "567-890-1234", "GhostWriter@BojackHorseman.com");
+      testStylist.Save();
+      string newPhone = "789-012-3456";
+
+      //Act
+      testStylist.Update("Diane Nguyen", "789-012-3456", "GhostWriter@BojackHorseman.com");
+      string result = testStylist.GetPhone();
 
       //Assert
-      Assert.Equal(testList, result);
+      Assert.Equal(newPhone, result);
     }
 
     public void Dispose()
