@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Nancy;
 using Nancy.ViewEngines.Razor;
+using HairSalon.Objects;
 
 namespace HairSalon
 {
@@ -10,7 +11,15 @@ namespace HairSalon
     {
       Get["/"] = _ =>{
         return View["index.cshtml"];
-      };      
+      };
+      Get["/clients"] = _ =>{
+        List<Client> AllClients = Client.GetAll();
+        return View["clients.cshtml", AllClients];
+      };
+      Get["/stylists"] = _ => {
+        List<Stylist> AllStylist = Stylist.GetAll();
+        return View["stylists.cshtml", AllStylist];
+      };
     }
   }
 }
