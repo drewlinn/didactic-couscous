@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
 
-namespace HairSalon
+namespace HairSalon.Objects
 {
   public class Stylist
   {
@@ -230,6 +230,39 @@ namespace HairSalon
       }
       return foundStylist;
     }
+
+    public List<Client> GetClients()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM Clients WHERE stylistId = @StylistId;", conn);
+      SqlParameter stylistIdParam = new SqlParameter("@StylistId", this.GetId());
+      cmd.Parameters.Add(stylistIdParam);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Client> Clients = new List<Client> {};
+      while(rdr.Read())
+      {
+        int clientId = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        string clientPhone = rdr.GetString(2);
+        string clientEmail = rdr.GetString(3);
+        int clientStylistId = rdr.GetInt32(4);
+        Client newClient = new Client(clientName, clientPhone, clientEmail, clientStylistId, clientId);
+        Clients.Add(newClient);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return Clients;
+    }
+
 
   }
 }
