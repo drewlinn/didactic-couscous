@@ -1,6 +1,6 @@
 # C# Week 3 Code Review: Hair Salon Application
 
-#### A program that allows users to create to track and manage Hair Stylists and their Clients. 6/9/17
+#### A program that allows users to create, track and manage Hair Stylists and their Clients. 6/9/17
 
 #### By **Andrew Dalton**
 
