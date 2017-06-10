@@ -34,7 +34,7 @@ A website created with C# and HTML where a user can create a list of Hair Stylis
 5. On your browser, navigate to "localhost:5004" and enjoy!
 
 ## Known Bugs
-* No known bugs at this time.
+* User cannot yet select a new stylist when editing a client.
 
 ## Technologies Used
 * C#

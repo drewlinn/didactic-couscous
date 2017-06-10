@@ -16,10 +16,10 @@ namespace HairSalon
       //CREATE
       Get["/client/new"] = _ =>  {
         List<Stylist> AllStylist = Stylist.GetAll();
-        return View["/add_client.cshtml", AllStylist];
+        return View["add_client.cshtml", AllStylist];
       };
       Get["/stylist/new"] = _ =>  {
-        return View["/add_stylist.cshtml"];
+        return View["add_stylist.cshtml"];
       };
       Post["/clients"]= _ =>{
         Dictionary<string, object> model = new Dictionary<string, object>();
@@ -64,23 +64,52 @@ namespace HairSalon
         return View["stylist.cshtml", model];
       };
       //UPDATE
+      Get["/client/edit/{id}"] = parameters => {
+        Client SelectedClient = Client.Find(parameters.id);
+        List<Stylist> AllStylist = Stylist.GetAll();
+        return View["edit_client.cshtml", SelectedClient];
+      };
       Get["/stylist/edit/{id}"] = parameters => {
         Stylist SelectedStylist = Stylist.Find(parameters.id);
         return View["edit_stylist.cshtml", SelectedStylist];
+      };
+      Patch["/client/edit/{id}"] = parameters =>{
+        Client SelectedClient = Client.Find(parameters.id);
+        SelectedClient.Update(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist_id"]);
+        return View["success.cshtml"];
       };
       Patch["/stylist/edit/{id}"] = parameters =>{
         Stylist SelectedStylist = Stylist.Find(parameters.id);
         SelectedStylist.Update(Request.Form["stylist-name"], Request.Form["stylist-phone"], Request.Form["stylist-email"]);
         return View["success.cshtml"];
       };
-      Get["/client/edit/{id}"] = parameters => {
+      //DESTROY
+      Get["client/delete/{id}"] = parameters => {
         Client SelectedClient = Client.Find(parameters.id);
-        return View["edit_client.cshtml", SelectedClient];
+        return View["delete_client.cshtml", SelectedClient];
       };
-      Patch["/client/edit/{id}"] = parameters =>{
+      Get["stylist/delete/{id}"] = parameters => {
+        Stylist SelectedStylist = Stylist.Find(parameters.id);
+        return View["delete_stylist.cshtml", SelectedStylist];
+      };
+      Delete["client/delete/{id}"] = parameters => {
         Client SelectedClient = Client.Find(parameters.id);
-        SelectedClient.Update(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist_id"]);
+        SelectedClient.Delete();
         return View["success.cshtml"];
+      };
+      Delete["stylist/delete/{id}"] = parameters => {
+        Stylist SelectedStylist = Stylist.Find(parameters.id);
+        SelectedStylist.Delete();
+        return View["success.cshtml"];
+      };
+      Post["/clients/cleared"] = _ =>{
+        Client.DeleteAll();
+        return View["cleared.cshtml"];
+      };
+      Post["/stylists/cleared"] = _ =>{
+        Client.DeleteAll();
+        Stylist.DeleteAll();
+        return View["cleared.cshtml"];
       };
     }
   }
