@@ -1,0 +1,22 @@
+<h2>Stylist Name: @Model["stylist"].GetName()</h2>
+<h4>Phone Number: @Model["stylist"].GetPhone()</h4>
+<h4>Email Address: @Model["stylist"].GetEmail()</h4>
+@if(@Model["clients"].Count == 0)
+{
+  <p>@Model["stylist"].GetName() currently has no clients</p>
+}
+else
+{
+  <p>@Model["stylist"].GetName()'s clients are: </p>
+  <ol>
+    @foreach (var client in @Model["clients"])
+    {
+      <li><a href="/clients/@client.GetId()">@client.GetName()</li>
+    }
+  </ol>
+
+}
+
+<p><a href="/stylists">View all Stylists</a></p>
+<p><a href="/stylist/new">Add a new Stylist</a></p>
+<p><a href="/">Return home</a></p>
