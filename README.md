@@ -27,11 +27,17 @@ A website created with C# and HTML where a user can create a list of Hair Stylis
 
 ## Setup/Installation Requirements
 
-1. To run this program, you must have a C# compiler. I use [Mono](http://www.mono-project.com).
+1. To run this program, you must have a C# compiler (try [Mono](http://www.mono-project.com)).
 2. Install the [Nancy](http://nancyfx.org/) framework to use the view engine. Follow the link for installation instructions.
 3. Clone this repository.
-4. Open the command line--I use PowerShell--and navigate into the repository. Use the command "dnx kestrel" to start the server.
-5. On your browser, navigate to "localhost:5004" and enjoy!
+4. Open SSMS (SQL Server Management Studio which you can Download here [https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms])
+5. Select File > Open > File and select your .sql file.
+6. If the database does not already exist, add the following lines to the top of the script file "CREATE DATABASE [your_database_name]" "GO"
+7. Save the file.
+8. Click ! Execute.
+9. Verify that the database has been created and the schema and/or data imported.
+10. Open the command line (try using the Windows Powershell [https://msdn.microsoft.com/en-us/powershell/mt173057.aspx]) and navigate into the repository. Use the command "dnx kestrel" to start the server.
+11. On your browser, navigate to "localhost:5004" and enjoy!
 
 ## Known Bugs
 * User cannot yet select a new stylist when editing a client.
