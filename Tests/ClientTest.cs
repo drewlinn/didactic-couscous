@@ -44,16 +44,18 @@ namespace HairSalon
       string name = "Morty Smith";
       string phone = "555-555-5555";
       string email = "SecretlyACar@RickandMorty.com";
-      Client testClient = new Client(name, phone, email, 1);
+      int stylistId = 3;
+      Client testClient = new Client(name, phone, email, stylistId);
       testClient.Save();
       string newName = "EvilMorty";
       string newPhone = "555-545-5555";
       string newEmail = "EvilMorty@RickandMorty.com";
+      int newStylistId = 2;
       //Act
-      testClient.Update(newName, newPhone, newEmail);
-      string result = testClient.GetPhone();
+      testClient.Update(newName, newPhone, newEmail, newStylistId);
+      int result = testClient.GetStylistId();
       //Assert
-      Assert.Equal(newPhone, result);
+      Assert.Equal(newStylistId, result);
     }
 
     [Fact]

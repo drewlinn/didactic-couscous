@@ -1,0 +1,21 @@
+<h1>Edit Client</h1>
+<hr />
+<h2>Edit Client: @Model.GetName()</h2>
+<form action="/client/edit/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input name="client-id" type="hidden" value="@Model.GetId()">
+  <label for="client-name">Client Name</label>
+  <input id="client-name" name="client-name" type="text">
+  <label for="client-phone">Client Phone Number</label>
+  <input id="client-phone" name="client-phone" type="text">
+  <label for="client-email">Client Email Address</label>
+  <input id="client-email" name="client-email" type="text">
+  @* <select name="stylist_id">
+    @foreach (var stylists in Model)
+    {
+      <option value="@stylists.GetId()">@stylists.GetName()</option>
+    }
+  </select> *@
+  <button type="submit">Submit</button>
+</form>
+<h4><a href="/">Return home</a></h4>
