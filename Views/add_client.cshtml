@@ -6,7 +6,8 @@
   <input id="client-phone" name="client-phone" type="text">
   <label for="client-email">Client Email Address</label>
   <input id="client-email" name="client-email" type="text">
-  <select name="stylist_id">
+  <label for="stylist">Stylist</label>
+  <select name="stylist">
     @foreach (var stylists in Model)
     {
       <option value="@stylists.GetId()">@stylists.GetName()</option>

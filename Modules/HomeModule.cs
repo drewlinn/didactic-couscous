@@ -15,8 +15,8 @@ namespace HairSalon
       };
       //CREATE
       Get["/client/new"] = _ =>  {
-        List<Stylist> AllStylist = Stylist.GetAll();
-        return View["add_client.cshtml", AllStylist];
+        List<Stylist> AllStylists = Stylist.GetAll();
+        return View["add_client.cshtml", AllStylists];
       };
       Get["/stylist/new"] = _ =>  {
         return View["add_stylist.cshtml"];
@@ -65,9 +65,12 @@ namespace HairSalon
       };
       //UPDATE
       Get["/client/edit/{id}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>{};
         Client SelectedClient = Client.Find(parameters.id);
-        List<Stylist> AllStylist = Stylist.GetAll();
-        return View["edit_client.cshtml", SelectedClient];
+        List<Stylist> AllStylists = Stylist.GetAll();
+        model.Add("client", SelectedClient);
+        model.Add("stylists", Stylist.GetAll());
+        return View["edit_client.cshtml", model];
       };
       Get["/stylist/edit/{id}"] = parameters => {
         Stylist SelectedStylist = Stylist.Find(parameters.id);
