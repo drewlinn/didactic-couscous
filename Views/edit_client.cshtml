@@ -11,7 +11,7 @@
   <label for="client-email">Client Email Address</label>
   <input id="client-email" name="client-email" type="text">
   <label for="stylist">Stylist</label>
-  <select name="stylist_id">
+  <select name="stylist">
     @foreach (var stylists in @Model["stylists"])
     {
       <option value="@stylists.GetId()">@stylists.GetName()</option>

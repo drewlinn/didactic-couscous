@@ -23,7 +23,7 @@ namespace HairSalon
       };
       Post["/clients"]= _ =>{
         Dictionary<string, object> model = new Dictionary<string, object>();
-        Client newClient = new Client(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist_id"]);
+        Client newClient = new Client(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist"]);
         var selectedStylist = Stylist.Find(newClient.GetStylistId());
         newClient.Save();
         model.Add("stylist", selectedStylist);
@@ -78,7 +78,8 @@ namespace HairSalon
       };
       Patch["/client/edit/{id}"] = parameters =>{
         Client SelectedClient = Client.Find(parameters.id);
-        SelectedClient.Update(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist_id"]);
+        var selectedStylist = Stylist.Find(SelectedClient.GetStylistId());
+        SelectedClient.Update(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist"]);
         return View["success.cshtml"];
       };
       Patch["/stylist/edit/{id}"] = parameters =>{
