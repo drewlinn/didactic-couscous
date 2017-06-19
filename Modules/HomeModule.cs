@@ -79,7 +79,7 @@ namespace HairSalon
       Patch["/client/edit/{id}"] = parameters =>{
         Client SelectedClient = Client.Find(parameters.id);
         var selectedStylist = Stylist.Find(SelectedClient.GetStylistId());
-        SelectedClient.Update(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist"]);
+        SelectedClient.Update(Request.Form["client-name"], Request.Form["client-phone"], Request.Form["client-email"], Request.Form["stylist-id"]);
         return View["success.cshtml"];
       };
       Patch["/stylist/edit/{id}"] = parameters =>{

@@ -226,7 +226,7 @@ namespace HairSalon.Objects
       }
       return foundClient;
     }
-    
+
     public void Delete()
     {
       SqlConnection conn = DB.Connection();

@@ -1,17 +1,17 @@
 <h1>Edit Client</h1>
 <hr />
-<h2>Edit Client: @Model.["client"].GetName()</h2>
-<form action="/client/edit/@Model.["client"].GetId()" method="post">
+<h2>Edit Client: @Model["client"].GetName()</h2>
+<form action="/client/edit/@Model["client"].GetId()" method="post">
   <input type="hidden" name="_method" value="PATCH">
-  <input name="client-id" type="hidden" value="@Model.["client"].GetId()">
+  <input name="client-id" type="hidden" value="@Model["client"].GetId()">
   <label for="client-name">Client Name</label>
   <input id="client-name" name="client-name" type="text">
   <label for="client-phone">Client Phone Number</label>
   <input id="client-phone" name="client-phone" type="text">
   <label for="client-email">Client Email Address</label>
   <input id="client-email" name="client-email" type="text">
-  <label for="stylist">Stylist</label>
-  <select name="stylist">
+  <label for="stylist-id">Stylist</label>
+  <select name="stylist-id">
     @foreach (var stylists in @Model["stylists"])
     {
       <option value="@stylists.GetId()">@stylists.GetName()</option>
